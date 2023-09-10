@@ -7,7 +7,7 @@ SOLID is an acronym for the first five object-oriented design (OOD) principles b
 The illustration below represents the acronym for SOLID design principles.
 
 <p align="center">
-<img height="250px" src="https://github.com/tutungduong/solid_guide/blob/main/images/SOLID.png">
+<img src="https://github.com/tutungduong/solid_guide/blob/main/images/SOLID.png">
 </p>
 
 # Why use SOLID principles?
@@ -36,17 +36,17 @@ However, if we adhere to the SOLID principles, we are able to do the following:
 
 Let’s look at the definition of the five design principles.
 
-- In the **Single Responsibility Principle (SRP)**, each class should be responsible for a single part or functionality of the system.
+- In the **[Single Responsibility Principle (SRP)](#SPR)**, each class should be responsible for a single part or functionality of the system.
 
-- In the **Open Closed principle (OCP)**, software components should be open for extension but closed for modification.
+- In the **[Open Closed principle (OCP)](#OCP)**, software components should be open for extension but closed for modification.
 
-- In the **Liskov Substitution Principle (LSP)**, objects of a superclass should be replaceable with objects of its subclasses without breaking the system.
+- In the **[Liskov Substitution Principle (LSP)](#LSP)**, objects of a superclass should be replaceable with objects of its subclasses without breaking the system.
 
-- The **Interface Segregation Principle (ISP)** makes fine-grained interfaces that are client specific.
+- The **[Interface Segregation Principle (ISP)](#ISP)** makes fine-grained interfaces that are client specific.
 
-- The **Dependency Inversion Principle (DIP)**, ensures that the high-level modules are not dependent on low-level modules. In other words, one should depend upon abstraction and not concretion.
+- The **[Dependency Inversion Principle (DIP)](#DIP)**, ensures that the high-level modules are not dependent on low-level modules. In other words, one should depend upon abstraction and not concretion.
 
-## Single Responsability Principle (SRP)
+## Single Responsability Principle (SRP) <a name="SRP"></a>
 
 The **Single Responsibility Principle (SRP)** is perhaps the least understood of the SOLID concepts. The term was coined by Robert C. Martin who defines the SRP in the following way, "_A class should have only one reason to change._" This implies that any class or component in our code should only have one functionality. Everything in the class should be related to just one goal.
 
@@ -56,7 +56,9 @@ When programmers need to add features or new behavior, they frequently integrate
 
 The following illustration represents how SRP is applied in real life:
 
-**An exmaple of SRP ( hinh + title)**
+<p align="center">
+<img src="https://github.com/tutungduong/solid_guide/blob/main/images/SRP.png">
+</p>
 
 **Book invoice application**
 
@@ -70,7 +72,9 @@ Let’s try to understand SRP with the help of an example. We have a book invoic
 
 The following class diagram provides a blueprint of these classes:
 
-**The class diagram of the book invoice application without applying the SRP rule**
+<p align="center">
+<img src="https://github.com/tutungduong/solid_guide/blob/main/images/without_SRP.png">
+</p>
 
 **Violations**
 If we notice, the `Invoice` class violates the SRP in multiple ways:
@@ -81,13 +85,15 @@ If we notice, the `Invoice` class violates the SRP in multiple ways:
 
 Instead of modifying the `Invoice` class for these uses, we can create two new classes for printing and persistence logic: `InvoicePrinter` and `InvoiceStorage`, and move the methods accordingly, as shown below.
 
-**Hinh` The class diagram of the book invoice application after applying the SRP rule**
+<p align="center">
+<img src="https://github.com/tutungduong/solid_guide/blob/main/images/after_SPR.png">
+</p>
 
 ### Conclusion
 
 When a class performs one task, it contains a small number of methods and member variables that are self-explanatory. SRP achieves this goal, and due to this, our classes are more usable, and they provide easier maintenance.
 
-## Open-Closed Principle (OCP)
+## Open-Closed Principle (OCP) <a name="OCP"></a>
 
 In 1988, Bertrand Meyer defined the Open Closed `Principle (OCP)` in the following way, “A software artifact should be open for extension but closed for modification.” This means that a system should improve easily by adding new code instead of changing the code core. This way, the core code always retains its unique identity, making it reusable.
 
@@ -97,21 +103,28 @@ One might think of OCP as inheritance, but remember that inheritance is only one
 
 Suppose Alex had a cardboard business that sold boxes to its clients. We designed a class for calculating the volume of boxes. It takes the dimensions and calculates the volume of each box and adds it up to calculate the total volume of all boxes, as shown below.
 
-OCP_1
+<p align="center">
+<img src="https://github.com/tutungduong/solid_guide/blob/main/images/OCP_1.png">
+</p>
 
 The volume calculator class
 
 The algorithm for the `volume(Cuboid)` function is shown in the flowchart below.
 
-OCP_2 The volume(Cuboid) function
+<p align="center">
+<img src="https://github.com/tutungduong/solid_guide/blob/main/images/OCP_2.png">
+</p>
 
 As the business grew, Alex also started selling cone-shaped boxes. To integrate the calculation of its volume, we need to make a `Cone` class and update the` volume()` function. See the updated classes below:
 
-OCP_3 The volume(Cuboid) function
-
+<p align="center">
+<img src="https://github.com/tutungduong/solid_guide/blob/main/images/OCP_3.png">
+</p>
 The algorithm for the `volume(Shape)` function is shown in the flowchart below.
 
-OCP_4 The volume(Cuboid) function
+<p align="center">
+<img src="https://github.com/tutungduong/solid_guide/blob/main/images/OCP_4.png">
+</p>
 
 With only two types of boxes, the class structure looks fine, but what if Alex decides to deal with more types of boxes, e.g., a cylinder box? This will add complexity to the `volume(Shape)`. We will divide the code into segments using OCP to overcome this complexity.
 
@@ -119,7 +132,9 @@ With only two types of boxes, the class structure looks fine, but what if Alex d
 
 We will make a parent class, `Shape`, which is an abstract class and has a `volume()` function, that is extended by its sub-classes, `Cuboid`, `Cylinder`, and `Cone`. These derived classes have their own `volume()` functions according to the shape. Then we have the `VolumeCalculator` class that only performs one task: adding the volume of all the boxes using the `sumVolume()` function.
 
-OCP_5 The class diagram of VolumeCalculator according to OCP
+<p align="center">
+<img src="https://github.com/tutungduong/solid_guide/blob/main/images/OCP_5.png">
+</p>
 
 ### Conclusion
 
@@ -129,7 +144,7 @@ We can conclude the OCP discussion as follows:
 
 - The system must be divided into small components, which are arranged, so that core code is always protected from new code.
 
-## Liskov Substitution Principle (LSP)
+## Liskov Substitution Principle (LSP) <a name="LSP"></a>
 
 The **Liskov Substitution Principle (LSP)** is one of the fundamental design principles of object-oriented design. The LSP helps guide the use of inheritance in design so that the application does not break. It states that the objects of a subclass should behave the same way as the objects of the superclass, such that they are replaceable. This rule generally applies to abstraction concepts like inheritance and polymorphism.
 
@@ -137,7 +152,9 @@ The **Liskov Substitution Principle (LSP)** is one of the fundamental design pri
 
 Let's construct a simple class called `Vehicle` that has some attributes and methods and a subclass `Car` that extends it as shown below:
 
-LSP_1 The vehicle superclass
+<p align="center">
+<img src="https://github.com/tutungduong/solid_guide/blob/main/images/LSP_1.png">
+</p>
 
 So far, this implementation seems right since a car IS A vehicle, and the `startEngine()` method will override the superclass method. However, it's not as simple as it looks.
 
@@ -145,7 +162,9 @@ So far, this implementation seems right since a car IS A vehicle, and the `start
 
 Let's add a `Bicycle` subclass in this system and see what happens:
 
-LSP_2 The vehicle superclass
+<p align="center">
+<img src="https://github.com/tutungduong/solid_guide/blob/main/images/LSP_2.png">
+</p>
 
 This results in a problem. A bicycle is a vehicle, but it does not have an engine. Therefore, the `Bicycle` class should not be allowed to override the `startEngine()` method.
 
@@ -153,7 +172,9 @@ This results in a problem. A bicycle is a vehicle, but it does not have an engin
 
 A possible fix to this issue would be to add two subclasses of `Vehicle` that classify the vehicles as motorized vehicles and manual vehicles as follows:
 
-LSP_3 An example of the LSP implementation
+<p align="center">
+<img src="https://github.com/tutungduong/solid_guide/blob/main/images/LSP_3.png">
+</p>
 
 With this implementation, we have satisfied the LSP.
 
@@ -169,19 +190,23 @@ The LSP is an important principle that should be extended to the level of system
 
 - It makes the code maintainable and easier to upgrade.
 
-## Interface Segregation Principle (ISP)
+## Interface Segregation Principle (ISP) <a name="ISP"></a>
 
 The **Interface Segregation Principle (ISP)** is a design principle that does not recommend having methods that an interface would not use and require. Therefore, it goes against having fat interfaces in classes and prefers having small interfaces with a group of methods, each serving a particular purpose.
 
 The goal behind implementing the ISP is to have a precise code design that follows the correct abstraction guidelines and tends to be more flexible, which would help in making it more robust and reusable. This becomes key when more and more features are added to the software, making it bloated and harder to maintain.
 
-ISP_1 Having small interfaces for more robust software
+<p align="center">
+<img src="https://github.com/tutungduong/solid_guide/blob/main/images/ISP_1.png">
+</p>
 
 ### Example
 
 Let’s construct a simple interface called `Shape` that has the `area()` method, and `Square` and `Rectangle` as the classes to implement it as shown below:
 
-ISP_2 The Shape interface
+<p align="center">
+<img src="https://github.com/tutungduong/solid_guide/blob/main/images/ISP_2.png">
+</p>
 
 So far, this implementation seems right as both the `Square` and `Rectangle` classes are implementing an interface that they’re using. Let’s see how the ISP can be violated by this example.
 
@@ -189,13 +214,17 @@ So far, this implementation seems right as both the `Square` and `Rectangle` cla
 
 Let’s add the `volume()` method to the `Shape` interface and have a new subclass `Cube` to implement it:
 
-ISP_3 The Shape interface
+<p align="center">
+<img src="https://github.com/tutungduong/solid_guide/blob/main/images/ISP_3.png">
+</p>
 
 The violation leads to a problem. The 2-D shapes cannot have a volume, yet they’re forced to implement the `volume()` method of the `Shape` interface that they don’t have any use of. This is a clear violation of the Interface Segregation Principle.
 
 ### Solution
 
-ISP_4 The Shape interface
+<p align="center">
+<img src="https://github.com/tutungduong/solid_guide/blob/main/images/ISP_4.png">
+</p>
 
 Now, there are two interfaces present: `Shape` and `Shape3D`. The `Shape` interface contains only the methods that are required for 2-D shapes like squares, rectangles, etc., while the `Shape3D` interface inherits the methods of the `Shape` interface and itself only contains methods for 3-D shapes like cubes, spheres, etc.
 
@@ -209,7 +238,7 @@ The ISP, being an important principle, is the most violated principle in object-
 
 - It allows for efficient refactoring and redeployment of code.
 
-## Dependency Inversion Principle (DIP)
+## Dependency Inversion Principle (DIP) <a name="DIP"></a>
 
 The **Dependency Inversion Principle (DIP)** states that high-level modules should not depend on low-level modules, but rather both should depend on abstractions. The abstractions should not depend on details. Instead, the details should depend on abstractions.
 
@@ -225,7 +254,9 @@ Let’s see what a possible design would look like without the implementation of
 
 The class diagram of this example is shown below:
 
-DIP_1 Violation of the DIP
+<p align="center">
+<img src="https://github.com/tutungduong/solid_guide/blob/main/images/DIP_1.png">
+</p>
 
 Let’s note down some issues with this design:
 
@@ -239,11 +270,15 @@ A possible fix to this issue would be to add a `Faculty` class that will be the 
 
 Let’s look at the DIP implemented in class diagram below:
 
-DIP_2 DIP example of a high school
+<p align="center">
+<img src="https://github.com/tutungduong/solid_guide/blob/main/images/DIP_2.png">
+</p>
 
 Now, if any other kind of faculty is employed, they can just be easily added to the `Headmaster` without the need to explicitly inform the headmaster of it. Let’s take the example of an additional faculty position, `Secretary`. Its class would be a child of the `Faculty` class and would lead to the following diagram:
 
-DIP_3 DIP example of a high school
+<p align="center">
+<img src="https://github.com/tutungduong/solid_guide/blob/main/images/DIP_3.png">
+</p>
 
 With this implementation, we have decoupled some of the modules, and therefore, satisfied the Dependency Inversion Principle.
 
