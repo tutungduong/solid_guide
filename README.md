@@ -7,7 +7,7 @@ SOLID is an acronym for the first five object-oriented design (OOD) principles b
 The illustration below represents the acronym for SOLID design principles.
 
 <p align="center">
-<img height="250px" src="https://github.com/tutungduong/solid_guide/blob/main/Images/SOLID.png">
+<img height="250px" src="https://github.com/tutungduong/solid_guide/blob/main/images/SOLID.png">
 </p>
 
 # Why use SOLID principles?
