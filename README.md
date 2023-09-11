@@ -136,7 +136,7 @@ We will make a parent class, `Shape`, which is an abstract class and has a `volu
 <img src="https://github.com/tutungduong/solid_guide/blob/main/images/OCP_5.png">
 </p>
 
-    ### Conclusion
+### Conclusion
 
 We can conclude the OCP discussion as follows:
 
