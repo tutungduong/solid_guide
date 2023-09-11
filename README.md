@@ -104,7 +104,7 @@ One might think of OCP as inheritance, but remember that inheritance is only one
 Suppose Alex had a cardboard business that sold boxes to its clients. We designed a class for calculating the volume of boxes. It takes the dimensions and calculates the volume of each box and adds it up to calculate the total volume of all boxes, as shown below.
 
 <p align="center">
-<img src="https://github.com/tutungduong/solid_guide/blob/main/images/OCP_1.png">
+<img width="500px" src="https://github.com/tutungduong/solid_guide/blob/main/images/OCP_1.png">
 </p>
 
 The volume calculator class
@@ -118,12 +118,12 @@ The algorithm for the `volume(Cuboid)` function is shown in the flowchart below.
 As the business grew, Alex also started selling cone-shaped boxes. To integrate the calculation of its volume, we need to make a `Cone` class and update the` volume()` function. See the updated classes below:
 
 <p align="center">
-<img  width="250px" src="https://github.com/tutungduong/solid_guide/blob/main/images/OCP_3.png">
+<img  src="https://github.com/tutungduong/solid_guide/blob/main/images/OCP_3.png">
 </p>
 The algorithm for the `volume(Shape)` function is shown in the flowchart below.
 
 <p align="center">
-<img  src="https://github.com/tutungduong/solid_guide/blob/main/images/OCP_4.png">
+<img src="https://github.com/tutungduong/solid_guide/blob/main/images/OCP_4.png">
 </p>
 
 With only two types of boxes, the class structure looks fine, but what if Alex decides to deal with more types of boxes, e.g., a cylinder box? This will add complexity to the `volume(Shape)`. We will divide the code into segments using OCP to overcome this complexity.
