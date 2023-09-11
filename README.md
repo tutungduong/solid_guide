@@ -57,7 +57,7 @@ When programmers need to add features or new behavior, they frequently integrate
 The following illustration represents how SRP is applied in real life:
 
 <p align="center">
-<img src="https://github.com/tutungduong/solid_guide/blob/main/images/SRP.png">
+<img height="250px" src="https://github.com/tutungduong/solid_guide/blob/main/images/SRP.png">
 </p>
 
 **Book invoice application**
@@ -73,7 +73,7 @@ Let’s try to understand SRP with the help of an example. We have a book invoic
 The following class diagram provides a blueprint of these classes:
 
 <p align="center">
-<img src="https://github.com/tutungduong/solid_guide/blob/main/images/without_SRP.png">
+<img height="250px" src="https://github.com/tutungduong/solid_guide/blob/main/images/without_SRP.png">
 </p>
 
 **Violations**
@@ -86,7 +86,7 @@ If we notice, the `Invoice` class violates the SRP in multiple ways:
 Instead of modifying the `Invoice` class for these uses, we can create two new classes for printing and persistence logic: `InvoicePrinter` and `InvoiceStorage`, and move the methods accordingly, as shown below.
 
 <p align="center">
-<img src="https://github.com/tutungduong/solid_guide/blob/main/images/after_SPR.png">
+<img height="250px" src="https://github.com/tutungduong/solid_guide/blob/main/images/after_SPR.png">
 </p>
 
 ### Conclusion
@@ -104,7 +104,7 @@ One might think of OCP as inheritance, but remember that inheritance is only one
 Suppose Alex had a cardboard business that sold boxes to its clients. We designed a class for calculating the volume of boxes. It takes the dimensions and calculates the volume of each box and adds it up to calculate the total volume of all boxes, as shown below.
 
 <p align="center">
-<img src="https://github.com/tutungduong/solid_guide/blob/main/images/OCP_1.png">
+<img height="250px" src="https://github.com/tutungduong/solid_guide/blob/main/images/OCP_1.png">
 </p>
 
 The volume calculator class
@@ -112,18 +112,18 @@ The volume calculator class
 The algorithm for the `volume(Cuboid)` function is shown in the flowchart below.
 
 <p align="center">
-<img src="https://github.com/tutungduong/solid_guide/blob/main/images/OCP_2.png">
+<img height="250px" src="https://github.com/tutungduong/solid_guide/blob/main/images/OCP_2.png">
 </p>
 
 As the business grew, Alex also started selling cone-shaped boxes. To integrate the calculation of its volume, we need to make a `Cone` class and update the` volume()` function. See the updated classes below:
 
 <p align="center">
-<img src="https://github.com/tutungduong/solid_guide/blob/main/images/OCP_3.png">
+<img height="250px" src="https://github.com/tutungduong/solid_guide/blob/main/images/OCP_3.png">
 </p>
 The algorithm for the `volume(Shape)` function is shown in the flowchart below.
 
 <p align="center">
-<img src="https://github.com/tutungduong/solid_guide/blob/main/images/OCP_4.png">
+<img height="250px" src="https://github.com/tutungduong/solid_guide/blob/main/images/OCP_4.png">
 </p>
 
 With only two types of boxes, the class structure looks fine, but what if Alex decides to deal with more types of boxes, e.g., a cylinder box? This will add complexity to the `volume(Shape)`. We will divide the code into segments using OCP to overcome this complexity.
@@ -133,7 +133,7 @@ With only two types of boxes, the class structure looks fine, but what if Alex d
 We will make a parent class, `Shape`, which is an abstract class and has a `volume()` function, that is extended by its sub-classes, `Cuboid`, `Cylinder`, and `Cone`. These derived classes have their own `volume()` functions according to the shape. Then we have the `VolumeCalculator` class that only performs one task: adding the volume of all the boxes using the `sumVolume()` function.
 
 <p align="center">
-<img src="https://github.com/tutungduong/solid_guide/blob/main/images/OCP_5.png">
+<img height="250px" src="https://github.com/tutungduong/solid_guide/blob/main/images/OCP_5.png">
 </p>
 
 ### Conclusion
@@ -153,7 +153,7 @@ The **Liskov Substitution Principle (LSP)** is one of the fundamental design pri
 Let's construct a simple class called `Vehicle` that has some attributes and methods and a subclass `Car` that extends it as shown below:
 
 <p align="center">
-<img src="https://github.com/tutungduong/solid_guide/blob/main/images/LSP_1.png">
+<img height="250px" src="https://github.com/tutungduong/solid_guide/blob/main/images/LSP_1.png">
 </p>
 
 So far, this implementation seems right since a car IS A vehicle, and the `startEngine()` method will override the superclass method. However, it's not as simple as it looks.
@@ -163,7 +163,7 @@ So far, this implementation seems right since a car IS A vehicle, and the `start
 Let's add a `Bicycle` subclass in this system and see what happens:
 
 <p align="center">
-<img src="https://github.com/tutungduong/solid_guide/blob/main/images/LSP_2.png">
+<img height="250px" src="https://github.com/tutungduong/solid_guide/blob/main/images/LSP_2.png">
 </p>
 
 This results in a problem. A bicycle is a vehicle, but it does not have an engine. Therefore, the `Bicycle` class should not be allowed to override the `startEngine()` method.
@@ -173,7 +173,7 @@ This results in a problem. A bicycle is a vehicle, but it does not have an engin
 A possible fix to this issue would be to add two subclasses of `Vehicle` that classify the vehicles as motorized vehicles and manual vehicles as follows:
 
 <p align="center">
-<img src="https://github.com/tutungduong/solid_guide/blob/main/images/LSP_3.png">
+<img height="250px" src="https://github.com/tutungduong/solid_guide/blob/main/images/LSP_3.png">
 </p>
 
 With this implementation, we have satisfied the LSP.
@@ -197,7 +197,7 @@ The **Interface Segregation Principle (ISP)** is a design principle that does no
 The goal behind implementing the ISP is to have a precise code design that follows the correct abstraction guidelines and tends to be more flexible, which would help in making it more robust and reusable. This becomes key when more and more features are added to the software, making it bloated and harder to maintain.
 
 <p align="center">
-<img src="https://github.com/tutungduong/solid_guide/blob/main/images/ISP_1.png">
+<img height="250px" src="https://github.com/tutungduong/solid_guide/blob/main/images/ISP_1.png">
 </p>
 
 ### Example
@@ -205,7 +205,7 @@ The goal behind implementing the ISP is to have a precise code design that follo
 Let’s construct a simple interface called `Shape` that has the `area()` method, and `Square` and `Rectangle` as the classes to implement it as shown below:
 
 <p align="center">
-<img src="https://github.com/tutungduong/solid_guide/blob/main/images/ISP_2.png">
+<img height="250px" src="https://github.com/tutungduong/solid_guide/blob/main/images/ISP_2.png">
 </p>
 
 So far, this implementation seems right as both the `Square` and `Rectangle` classes are implementing an interface that they’re using. Let’s see how the ISP can be violated by this example.
@@ -215,7 +215,7 @@ So far, this implementation seems right as both the `Square` and `Rectangle` cla
 Let’s add the `volume()` method to the `Shape` interface and have a new subclass `Cube` to implement it:
 
 <p align="center">
-<img src="https://github.com/tutungduong/solid_guide/blob/main/images/ISP_3.png">
+<img height="250px" src="https://github.com/tutungduong/solid_guide/blob/main/images/ISP_3.png">
 </p>
 
 The violation leads to a problem. The 2-D shapes cannot have a volume, yet they’re forced to implement the `volume()` method of the `Shape` interface that they don’t have any use of. This is a clear violation of the Interface Segregation Principle.
@@ -223,7 +223,7 @@ The violation leads to a problem. The 2-D shapes cannot have a volume, yet they�
 ### Solution
 
 <p align="center">
-<img src="https://github.com/tutungduong/solid_guide/blob/main/images/ISP_4.png">
+<img height="250px" src="https://github.com/tutungduong/solid_guide/blob/main/images/ISP_4.png">
 </p>
 
 Now, there are two interfaces present: `Shape` and `Shape3D`. The `Shape` interface contains only the methods that are required for 2-D shapes like squares, rectangles, etc., while the `Shape3D` interface inherits the methods of the `Shape` interface and itself only contains methods for 3-D shapes like cubes, spheres, etc.
@@ -255,7 +255,7 @@ Let’s see what a possible design would look like without the implementation of
 The class diagram of this example is shown below:
 
 <p align="center">
-<img src="https://github.com/tutungduong/solid_guide/blob/main/images/DIP_1.png">
+<img height="250px" src="https://github.com/tutungduong/solid_guide/blob/main/images/DIP_1.png">
 </p>
 
 Let’s note down some issues with this design:
@@ -271,13 +271,13 @@ A possible fix to this issue would be to add a `Faculty` class that will be the 
 Let’s look at the DIP implemented in class diagram below:
 
 <p align="center">
-<img src="https://github.com/tutungduong/solid_guide/blob/main/images/DIP_2.png">
+<img height="250px" src="https://github.com/tutungduong/solid_guide/blob/main/images/DIP_2.png">
 </p>
 
 Now, if any other kind of faculty is employed, they can just be easily added to the `Headmaster` without the need to explicitly inform the headmaster of it. Let’s take the example of an additional faculty position, `Secretary`. Its class would be a child of the `Faculty` class and would lead to the following diagram:
 
 <p align="center">
-<img src="https://github.com/tutungduong/solid_guide/blob/main/images/DIP_3.png">
+<img height="250px" src="https://github.com/tutungduong/solid_guide/blob/main/images/DIP_3.png">
 </p>
 
 With this implementation, we have decoupled some of the modules, and therefore, satisfied the Dependency Inversion Principle.
